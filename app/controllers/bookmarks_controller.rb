@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
-  def index
-    @bookmarks = Bookmark.all
-  end
+  # def index
+  #   @bookmarks = Bookmark.all
+  # end
 
   def show
     @bookmark = Bookmark.find(params[:list_id])
@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list # attach to new bookmark, list id which is coming from page
     if @bookmark.save
-      redirect_to list_bookmarks_path(@list)
+      redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
     end
