@@ -1,3 +1,6 @@
 <h1><%= @list.name %></h1>
 
-<%= link_to "New bookmark", new_list_bookmark_path(@list) %>
+<%= link_to "Bookmarked in this list", list_bookmarks_path(@list) %>
+
+<%= @list.bookmarks.first.comment %>
+<%= link_to "New movie", new_list_bookmark_path(@list) %>
