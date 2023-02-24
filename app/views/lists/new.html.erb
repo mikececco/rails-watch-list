@@ -8,6 +8,7 @@
   <div class="border p-5">
     <%= simple_form_for(@list) do |f| %>
       <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
       <%= f.submit class: "align-baseline btn btn-primary mb-3 rounded-pill"%>
     <% end %>
   </div>
