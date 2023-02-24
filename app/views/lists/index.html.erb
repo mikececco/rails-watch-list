@@ -6,11 +6,15 @@
   </div>
 
   <div class="border p-5">
-    <ul class="list-group list-group-horizontal">
-      <% @lists.each do |list| %>
-        <li class="list-group-item rounded-pill m-3"><%= link_to list.name.capitalize, list_path(list) %></li>
-      <% end %>
-    </ul>
+    <% if @lists.count.positive? %>
+      <ul class="list-group list-group-horizontal">
+        <% @lists.each do |list| %>
+          <li class="list-group-item rounded-pill m-3"><%= link_to list.name.capitalize, list_path(list) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h1 class="text-center">Create new list!</h1>
+    <% end %>
   </div>
 
 
