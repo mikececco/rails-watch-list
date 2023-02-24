@@ -1,7 +1,7 @@
 <div class="border p-5">
 
   <div class="d-flex justify-content-between">
-    <h1><%= @list.name.capitalize %></h1>
+    <h1>'<%= @list.name.capitalize %>' list</h1>
     <%= link_to "Back", lists_path, class: "align-baseline btn btn-secondary rounded-pill mb-3" %>
   </div>
 
@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= bookmark.movie.title %></h5>
                   <p class="card-text"><%= bookmark.movie.overview %></p>
-                  <%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                  <%= link_to '<i data-feather="trash-2"></i>'.html_safe, bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "align-baseline btn btn-danger rounded-pill"%>
                 </div>
             </div>
           </div>
@@ -30,7 +30,10 @@
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to "Back to top", "#", class: "flex-fill align-baseline btn btn-info rounded-pill m-3 mt-5" %>
   </div>
-  <div class="d-flex justify-content-center align-items-center">
-    <%= link_to "Delete list", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "align-baseline btn btn-warning rounded-pill m-3 mt-5" %>
-  </div>
+  <% if @list.bookmarks.count.positive? %>
+    <div class="d-flex justify-content-center align-items-center">
+      <%= link_to "Delete list", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "align-baseline btn btn-warning rounded-pill m-3 mt-5" %>
+    </div>
+  <% else %>
+  <% end %>
 </div>
